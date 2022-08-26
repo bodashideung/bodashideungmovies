@@ -16,16 +16,20 @@ export function MoviesProvider(props) {
 
   const [trendingMovies, setTrendingMovies] = useState([]);
 
-  async function getTrendingMovies() {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`
-    );
-    const data = await response.json();
-    console.log(data)
-    setTrendingMovies(data.results);
-  }
+  
+  useEffect(() => {
+    
+    async function getTrendingMovies() {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      const data = await response.json();
+      console.log(data)
+      setTrendingMovies(data.results);
+    }
 
-  useEffect(() => getTrendingMovies, [])
+    getTrendingMovies()
+  }, [])
 
   console.log(trendingMovies)
 
