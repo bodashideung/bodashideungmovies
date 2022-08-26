@@ -9,6 +9,7 @@ function TrendingMovies() {
 // console.log(trendingMovies)
 
 const [trendingMovies, setTrendingMovies] = useState([]);
+const [isLoading, setIsLoading] = useState(true);
 
 async function getTrendingMovies() {
   const response = await fetch(
@@ -16,9 +17,18 @@ async function getTrendingMovies() {
   );
   const data = await response.json();
   setTrendingMovies(data.results);
+  setIsLoading(false);
 }
 
 useEffect(() => getTrendingMovies, [])
+
+if (isLoading) {
+  return (
+    <div>
+      loading...
+    </div>
+  )
+}
 
   return (
     <React.Fragment>
