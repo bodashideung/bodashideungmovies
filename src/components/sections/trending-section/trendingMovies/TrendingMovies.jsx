@@ -6,6 +6,7 @@ import '@splidejs/react-splide/css'
 
 function TrendingMovies() {
 const {trendingMovies} = useContext(MoviesContext);
+console.log(trendingMovies)
 
   return (
     <React.Fragment>
