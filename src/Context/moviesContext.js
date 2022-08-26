@@ -14,6 +14,8 @@ export function MoviesProvider(props) {
   const [detail, setDetail] = useState({});
   const { pathname } = useLocation();
 
+  console.log(trendingMovies)
+
   useEffect(() => toTop, [pathname]);
 
 
